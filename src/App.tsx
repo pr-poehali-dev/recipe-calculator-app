@@ -6,7 +6,6 @@ import NavBar from '@/components/NavBar';
 import HomePage from '@/pages/HomePage';
 import RecipesPage from '@/pages/RecipesPage';
 import MenuPage from '@/pages/MenuPage';
-import HistoryPage from '@/pages/HistoryPage';
 import FavoritesPage from '@/pages/FavoritesPage';
 import ProductsPage from '@/pages/ProductsPage';
 
@@ -18,7 +17,6 @@ export default function App() {
       case 'home': return <HomePage onNavigate={setActivePage} />;
       case 'recipes': return <RecipesPage />;
       case 'menu': return <MenuPage />;
-      case 'history': return <HistoryPage />;
       case 'favorites': return <FavoritesPage />;
       case 'products': return <ProductsPage />;
       default: return <HomePage onNavigate={setActivePage} />;

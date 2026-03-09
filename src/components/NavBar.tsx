@@ -9,7 +9,6 @@ const NAV_ITEMS = [
   { id: 'home', label: 'Главная', icon: 'Home' },
   { id: 'recipes', label: 'Рецепты', icon: 'UtensilsCrossed' },
   { id: 'menu', label: 'Меню', icon: 'CalendarDays' },
-  { id: 'history', label: 'История', icon: 'History' },
   { id: 'favorites', label: 'Избранное', icon: 'Heart' },
   { id: 'products', label: 'Продукты', icon: 'ShoppingBasket' },
 ];
