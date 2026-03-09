@@ -1,28 +1,42 @@
-
+import { useState } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import NavBar from '@/components/NavBar';
+import HomePage from '@/pages/HomePage';
+import RecipesPage from '@/pages/RecipesPage';
+import MenuPage from '@/pages/MenuPage';
+import HistoryPage from '@/pages/HistoryPage';
+import FavoritesPage from '@/pages/FavoritesPage';
+import ProductsPage from '@/pages/ProductsPage';
 
-const queryClient = new QueryClient();
+export default function App() {
+  const [activePage, setActivePage] = useState('home');
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+  const renderPage = () => {
+    switch (activePage) {
+      case 'home': return <HomePage onNavigate={setActivePage} />;
+      case 'recipes': return <RecipesPage />;
+      case 'menu': return <MenuPage />;
+      case 'history': return <HistoryPage />;
+      case 'favorites': return <FavoritesPage />;
+      case 'products': return <ProductsPage />;
+      default: return <HomePage onNavigate={setActivePage} />;
+    }
+  };
+
+  return (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="min-h-screen bg-background">
+        <NavBar active={activePage} onChange={setActivePage} />
+        <main className="lg:ml-64 min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 pt-6 lg:pt-8">
+            {renderPage()}
+          </div>
+        </main>
+      </div>
     </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+  );
+}
