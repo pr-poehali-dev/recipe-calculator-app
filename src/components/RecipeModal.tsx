@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Recipe, CATEGORY_LABELS, DIFFICULTY_LABELS } from '@/data/recipes';
 import { calcNutrition } from '@/lib/recipeUtils';
 import { useAppStore } from '@/store/useAppStore';
@@ -36,6 +36,8 @@ export default function RecipeModal({ recipe, open, onClose, missingIngredients 
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-lg w-full max-h-[90vh] overflow-y-auto p-0 rounded-3xl border-0 shadow-2xl custom-scroll">
+        <DialogTitle className="sr-only">{recipe.name}</DialogTitle>
+        <DialogDescription className="sr-only">{recipe.description}</DialogDescription>
         {/* Header */}
         <div className="relative h-48 gradient-warm flex items-center justify-center sticky top-0 z-10 rounded-t-3xl">
           <span className="text-9xl select-none" style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.12))' }}>

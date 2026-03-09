@@ -93,9 +93,9 @@ export default function MenuPage() {
                   <Icon name="Trash2" size={12} /> Очистить
                 </button>
               </div>
-              {todayPlan.meals.map(({ recipe, servings, mealType }) => (
+              {todayPlan.meals.map(({ recipe, servings, mealType }, idx) => (
                 <div
-                  key={recipe.id}
+                  key={`${recipe.id}-${idx}`}
                   className="bg-white rounded-2xl p-4 flex items-center gap-4 border border-border/50 shadow-sm animate-fade-in"
                 >
                   <span className="text-4xl shrink-0">{recipe.emoji}</span>

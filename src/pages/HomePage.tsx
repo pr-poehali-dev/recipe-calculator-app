@@ -80,7 +80,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {canCookNow.slice(0, 4).map((m, i) => (
               <RecipeCard
-                key={m.recipe.id}
+                key={`can-${m.recipe.id}`}
                 recipe={m.recipe}
                 matchPercent={100}
                 canCook
@@ -104,7 +104,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {almostReady.map((m, i) => (
               <RecipeCard
-                key={m.recipe.id}
+                key={`almost-${m.recipe.id}`}
                 recipe={m.recipe}
                 matchPercent={m.matchPercent}
                 missingIngredients={m.missingIngredients}
